@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden p-6 m-4">
+        <!-- Шапка -->
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-xl font-bold text-gray-800">Цифровой документ</h1>
+            <span class="px-3 py-1 bg-red-100 text-red-600 text-xs font-semibold rounded-full">Удостоверение</span>
+        </div>
+
+        <!-- Карточка документа -->
+        <div class="bg-gradient-to-br from-red-600 to-red-800 rounded-xl p-5 text-white shadow-lg mb-6">
+            <div class="flex items-center space-x-4 mb-4">
+                <!-- Место под фото -->
+                <div class="w-20 h-24 bg-gray-300 rounded-lg overflow-hidden border-2 border-white/50 flex-shrink-0">
+                    <img id="photoPreview" src="https://via.placeholder.com/150" alt="Фото" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <p class="text-xs text-red-200">ФИО</p>
+                    <h2 id="nameText" class="text-lg font-bold">Иванов Иван Иванович</h2>
+                    <p class="text-xs text-red-200 mt-2">ИИН</p>
+                    <p id="iinText" class="text-sm font-mono tracking-wider">000000000000</p>
+                </div>
+            </div>
+            <div class="flex justify-between text-xs border-t border-red-500/50 pt-3">
+                <span>Действителен до: бессрочно</span>
+                <span>Казахстан</span>
+            </div>
+        </div>
+
+        <!-- Настройки / Загрузка данных (скрывается, если не нужно) -->
+        <div class="space-y-4 border-t pt-4">
+            <p class="text-xs text-gray-500 font-medium">Настройки отображения:</p>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">Ссылка на фото:</label>
+                <input type="text" id="photoInput" placeholder="Вставь ссылку на фото" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">ФИО:</label>
+                <input type="text" id="nameInput" value="Иванов Иван Иванович" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">ИИН:</label>
+                <input type="text" id="iinInput" value="000000000000" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <button onclick="updateCard()" class="w-full bg-red-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition">Обновить данные</button>
+        </div>
+    </div>
+
+    <script>
+        function updateCard() {
+            const photoUrl = document.getElementById('photoInput').value;
+            const name = document.getElementById('nameInput').value;
+            const iin = document.getElementById('iinInput').value;
+
+            if (photoUrl) document.getElementById('photoPreview').src = photoUrl;
+            if (name) document.getElementById('nameText').innerText = name;
+            if (iin) document.getElementById('iinText').innerText = iin;
+        }
+    </script>
+</body>
+</html>
